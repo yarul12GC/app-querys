@@ -21,9 +21,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css", "src/app/assets/bootstrap.min.css"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -79,12 +77,13 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css", "src/app/assets/bootstrap.min.css"]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "93846261-24fb-4371-a931-e89b7915c87d"
   }
 }

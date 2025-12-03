@@ -1,0 +1,27 @@
+<div class="container-fluid layout-wrapper section1">
+
+    <main class="layout-main">
+        <div class="row h-100">
+
+            <!-- SIDEBAR -->
+            <div class="col-12 col-md-4 col-lg-2 p-0 sidebar">
+                <aside>
+                    <app-sidebar></app-sidebar>
+                </aside>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="col-12 col-md-8 col-lg-10 content-area">
+                <div class="content-wrapper">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="row text-white text-center p-2 footer">
+        <app-footer></app-footer>
+    </footer>
+
+</div>

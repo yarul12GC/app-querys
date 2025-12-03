@@ -1,0 +1,102 @@
+<div class="col-12 p-4" [formGroup]="queryForm">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-secondary fw-bold text-center">Query de validación, exportación, transferencia e
+                importación(Tablas)
+            </h4>
+        </div>
+    </div>
+
+    <!-- Fila 1: Datos Básicos del Esquema -->
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Owner (Esquema)</label>
+                <input type="text" class="form-control" formControlName="owner" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Nombre Directorio Oracle</label>
+                <input type="text" class="form-control" formControlName="directoryName" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Nombre Base Dump </label>
+                <input type="text" class="form-control" formControlName="dumpBaseName" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Fila 2: Rutas y Conexión Remota -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label fw-bold">Ruta Física Origen</label>
+                <input type="text" class="form-control" formControlName="directoryPathSource"
+                    placeholder="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label fw-bold">Ruta Física Destino</label>
+                <input type="text" class="form-control" formControlName="directoryPathDest"
+                    placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label fw-bold">IP Servidor Destino</label>
+                <input type="text" class="form-control" formControlName="ipRemote" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label fw-bold">Usuario Remoto</label>
+                <input type="text" class="form-control" formControlName="remoteUser" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Fila 3: Tablas (Area grande) -->
+    <div class="row mt-3">
+        <div class="col-10">
+            <div class="form-group">
+                <label class="form-label fw-bold">Tablas (Separadas por coma)</label>
+                <textarea class="form-control" formControlName="tables" rows="3"
+                    placeholder=""></textarea>
+                <!-- <small class="text-muted">Ingresa las tablas tal cual se usarán en el comando TABLES=...</small> -->
+            </div>
+        </div>
+        <div class="col-2 my-auto">
+            <button class="btn btn-success w-100 fw-bold" (click)="generate()">
+                <i class="bi bi-play-circle-fill me-1"></i> GENERAR
+            </button>
+        </div>
+    </div>
+
+
+
+    <!-- Sección de Resultado -->
+    <div class="row mt-4" *ngIf="generatedQuery">
+        <div class="col-12">
+            <div class="card bg-dark text-light ">
+                <div class="card-header d-flex justify-content-between align-items-center text-white">
+                    <h5 class="mb-0"><i class="bi bi-code-slash me-2"></i>Script Resultante</h5>
+                    <button class="btn btn-sm btn-outline-light"
+                        onclick="navigator.clipboard.writeText(this.parentElement.nextElementSibling.innerText)">
+                        <i class="bi bi-clipboard"></i> Copiar
+                    </button>
+                </div>
+                <div class="card-body p-0">
+                    <pre class="p-3 mb-0"
+                        style="white-space: pre-wrap; font-family: 'Courier New', monospace; font-size: 0.85rem; color: #a5d6a7; background-color: #1e1e1e;">{{ generatedQuery }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

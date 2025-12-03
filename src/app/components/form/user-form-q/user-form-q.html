@@ -1,0 +1,134 @@
+<div class="col-12 p-4" [formGroup]="queryForm">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-secondary fw-bold text-center">Query User(s)</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label fw-bold">Nombre de Usuario</label>
+                <input type="text" class="form-control" formControlName="username" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label fw-bold">Rol / Permiso</label>
+                <input type="text" class="form-control" formControlName="role" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label fw-bold">Perfil</label>
+                <input type="text" class="form-control" formControlName="profile" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label fw-bold">Mismos permisos de (Clonar)</label>
+                <input type="text" class="form-control" formControlName="cloneFromUser" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Longitud contraseña</label>
+                <input type="number" class="form-control" formControlName="passwordLength">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Base de Datos</label>
+                <input type="text" class="form-control" formControlName="database" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Esquema</label>
+                <input type="text" class="form-control" formControlName="schema" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-4">
+        <div class="row">
+
+            <div class="col-md-5 mb-2">
+                <div class="dropdown w-100 position-relative">
+                    <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center"
+                        type="button" (click)="toggleDropdown('permisos')">
+                        <span>SELECCIONAR PERMISOS EXTRA</span>
+                        <i [class]="isOpenPermisos ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i>
+                    </button>
+
+                    <div class="dropdown-panel mt-1 p-3 border rounded bg-white shadow" *ngIf="isOpenPermisos"
+                        style="position: absolute; z-index: 1000; width: 100%; max-height: 200px; overflow-y: auto;">
+                        <ul class="list-unstyled mb-0">
+                            <li *ngFor="let perm of permisosList">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" [value]="perm"
+                                        (change)="onCheckboxChange($event, 'permissions')" [id]="'perm'+perm">
+                                    <label class="form-check-label" [for]="'perm'+perm">
+                                        {{ perm }}
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 mb-2">
+                <div class="dropdown w-100 position-relative">
+                    <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center"
+                        type="button" (click)="toggleDropdown('objetos')">
+                        <span>SELECCIONAR OBJETOS</span>
+                        <i [class]="isOpenObjetos ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i>
+                    </button>
+
+                    <div class="dropdown-panel mt-1 p-3 border rounded bg-white shadow" *ngIf="isOpenObjetos"
+                        style="position: absolute; z-index: 1000; width: 100%; max-height: 200px; overflow-y: auto;">
+                        <ul class="list-unstyled mb-0">
+                            <li *ngFor="let obj of objetosList">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" [value]="obj"
+                                        (change)="onCheckboxChange($event, 'objects')" [id]="'obj'+obj">
+                                    <label class="form-check-label" [for]="'obj'+obj">
+                                        {{ obj }}
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-success w-100 fw-bold" (click)="generate()">
+                    <i class="bi bi-play-circle-fill me-1"></i> GENERAR
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4" *ngIf="generatedQuery">
+        <div class="col-12">
+            <div class="card bg-dark text-light">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Script Generado:</h5>
+                    <button class="btn btn-sm btn-outline-light"
+                        onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText)">Copiar</button>
+                    <div style="display:none">{{generatedQuery}}</div>
+                </div>
+                <div class="card-body p-0">
+                    <pre class="p-3 mb-0"
+                        style="white-space: pre-wrap; font-family: 'Courier New', monospace; font-size: 0.9rem; color: #a5d6a7;">{{ generatedQuery }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

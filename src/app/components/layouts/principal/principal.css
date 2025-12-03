@@ -1,0 +1,37 @@
+/* Wrapper general */
+.layout-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(234, 234, 234);
+}
+
+.layout-main {
+    flex: 1;
+}
+
+.sidebar {
+    background: #111827;
+    min-height: 100%;
+}
+
+.content-area {
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.content-wrapper {
+    width: 100%;
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    min-height: calc(100vh - 7rem);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.footer {
+    margin-top: auto;
+    background: #111827;
+}

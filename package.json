@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:APP-QUERYES-DESPK": "node dist/APP-QUERYES-DESPK/server/server.mjs"
+    "serve:ssr:APP-QUERYES-DESPK": "node dist/APP-QUERYES-DESPK/server/server.mjs",
+    "electron": "npm run start & electron ./electron/main.js",
+    "electron:build": "ng build --base-href ./ && electron-builder"
   },
   "prettier": {
     "printWidth": 100,
@@ -42,6 +44,8 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "electron": "^39.2.1",
+    "electron-builder": "^26.0.12",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
