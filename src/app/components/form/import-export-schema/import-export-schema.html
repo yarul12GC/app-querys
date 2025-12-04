@@ -9,19 +9,29 @@
 
     <!-- Fila 1: Datos Básicos del Esquema -->
     <div class="row mt-3">
-        <div class="col-md-4">
+        <div class="col-4 my-auto">
+            <div class="form-group">
+                <label class="form-label fw-bold">Nombre Directorio</label>
+                <input type="text" class="form-control" formControlName="directoryName" placeholder="">
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <label class="form-label fw-bold">Tablas (Separadas por coma)</label>
+                <textarea class="form-control" formControlName="tables" rows="3" placeholder=""></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="form-label fw-bold">Owner (Esquema)</label>
                 <input type="text" class="form-control" formControlName="owner" placeholder="">
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="form-label fw-bold">Nombre Directorio Oracle</label>
-                <input type="text" class="form-control" formControlName="directoryName" placeholder="">
-            </div>
-        </div>
-        <div class="col-md-4">
+
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="form-label fw-bold">Nombre Base Dump </label>
                 <input type="text" class="form-control" formControlName="dumpBaseName" placeholder="">
@@ -33,18 +43,17 @@
     <div class="row mt-3">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label fw-bold">Ruta Física Origen</label>
-                <input type="text" class="form-control" formControlName="directoryPathSource"
-                    placeholder="">
+                <label class="form-label fw-bold">CSP origen</label>
+                <input type="text" class="form-control" formControlName="directoryPathSource" placeholder="">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label fw-bold">Ruta Física Destino</label>
-                <input type="text" class="form-control" formControlName="directoryPathDest"
-                    placeholder="">
+                <label class="form-label fw-bold">Usuario Remoto</label>
+                <input type="text" class="form-control" formControlName="remoteUser" placeholder="">
             </div>
         </div>
+        
     </div>
 
     <div class="row mt-3">
@@ -56,8 +65,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label fw-bold">Usuario Remoto</label>
-                <input type="text" class="form-control" formControlName="remoteUser" placeholder="">
+                <label class="form-label fw-bold">CSP destino</label>
+                <input type="text" class="form-control" formControlName="directoryPathDest" placeholder="">
             </div>
         </div>
     </div>
@@ -65,12 +74,7 @@
     <!-- Fila 3: Tablas (Area grande) -->
     <div class="row mt-3">
         <div class="col-10">
-            <div class="form-group">
-                <label class="form-label fw-bold">Tablas (Separadas por coma)</label>
-                <textarea class="form-control" formControlName="tables" rows="3"
-                    placeholder=""></textarea>
-                <!-- <small class="text-muted">Ingresa las tablas tal cual se usarán en el comando TABLES=...</small> -->
-            </div>
+
         </div>
         <div class="col-2 my-auto">
             <button class="btn btn-success w-100 fw-bold" (click)="generate()">
