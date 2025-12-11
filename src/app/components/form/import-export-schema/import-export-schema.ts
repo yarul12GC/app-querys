@@ -62,7 +62,7 @@ col DIRECTORY_NAME format a25
 col DIRECTORY_PATH format a25
 COL OWNER for a25
 SET LINES 200
-SELECT * FROM DBA_DIRECTORIES WHERE DIRECTORY_NAME = '${dirName}';
+SELECT * FROM DBA_DIRECTORIES;
 ---------------------------------------------`;
 
     const section2 = `
