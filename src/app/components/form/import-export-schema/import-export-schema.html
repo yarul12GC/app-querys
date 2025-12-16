@@ -43,7 +43,7 @@
     <div class="row mt-3">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label fw-bold">CSP origen</label>
+                <label class="form-label fw-bold">CSP directori path origen</label>
                 <input type="text" class="form-control" formControlName="directoryPathSource" placeholder="">
             </div>
         </div>
@@ -65,8 +65,30 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="form-label fw-bold">CSP destino</label>
+                <label class="form-label fw-bold">CSP directori path destino</label>
                 <input type="text" class="form-control" formControlName="directoryPathDest" placeholder="">
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="row mt-3">
+         <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">CSP directori path destino(Respaldo)</label>
+                <input type="text" class="form-control" formControlName="directoryPathDestBackup" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Remap (schema)</label>
+                <input type="text" class="form-control" formControlName="remapSchema" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label fw-bold">Remap (tables)</label>
+                <input type="text" class="form-control" formControlName="remapTables" placeholder="">
             </div>
         </div>
     </div>
