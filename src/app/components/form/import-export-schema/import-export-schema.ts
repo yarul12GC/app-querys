@@ -25,7 +25,8 @@ export class ImportExportSchema {
         remoteUser: ['tismnyl'],
         directoryPathDestBackup: [''],
         remapSchema: [''],
-        remapTables: ['']
+        remapTables: [''],
+        directoryBackup: ['']
     });
 
     constructor() { }
@@ -44,6 +45,8 @@ export class ImportExportSchema {
         const pathBackup = f.directoryPathDestBackup.trim();
         const remapSchema = f.remapSchema.trim();
         const remapTables = f.remapTables.trim();
+        const dirBackup = f.directoryBackup.trim();
+
 
 
 
@@ -130,7 +133,7 @@ LOGFILE=EXP_${dumpName}.log &
 RESPALDO (EXPDP - BKP)
 
 nohup expdp \\'/ as sysdba \\' TABLES=${tablesForCommand} 
-DIRECTORY=${dirName}
+DIRECTORY=${dirBackup}
 COMPRESSION=all CONTENT=ALL
  EXCLUDE=STATISTICS DUMPFILE=BKP_${pathBackup}.dmp 
  LOGFILE=BKP_${pathBackup}.log &
@@ -169,7 +172,7 @@ IMPORT (DESTINO)
 
 nohup impdp \\'/ as sysdba \\'
 TABLES=${tablesForCommand} 
-TABLE_EXISTS_ACTION=REPLACE DIRECTORY=${dirName} ${remapSchemaLine} ${remapTablesLine} COMPRESSION=all CONTENT=ALL 
+TABLE_EXISTS_ACTION=REPLACE DIRECTORY=${dirBackup} ${remapSchemaLine} ${remapTablesLine} COMPRESSION=all CONTENT=ALL 
 EXCLUDE=STATISTICS
 DUMPFILE=EXP_${dumpName}.dmp LOGFILE=IMP_${dumpName}.log &`;
 
